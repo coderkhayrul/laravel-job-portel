@@ -20,7 +20,8 @@
                         <td><i class="fas fa-map-marker-alt text-primary"></i>&nbsp;Address: {{ $job->address }}</td>
                         <td><i class="fas fa-globe-asia text-primary"></i>&nbsp;Date: {{ $job->created_at->diffForHumans() }}</td>
                         <td>
-                            <button class="btn btn-success btn-sm">Apply</button>
+                            {{-- <button class="btn btn-success btn-sm">Apply</button> --}}
+                            <a class="btn btn-success btn-sm"href="{{ route('jobs.show',[$job->id,$job->slug]) }}">Apply</a>
                         </td>
                     </tr>
                 @endforeach

@@ -36,6 +36,7 @@ class JobFactory extends Factory
             'type' => 'fulltime',
             'status' => rand(0, 1),
             'description' => $this->faker->paragraph(rand(2, 10)),
+            'roles' => $this->faker->catchPhrase(),
             'last_date' => $this->faker->dateTime(),
         ];
     }
