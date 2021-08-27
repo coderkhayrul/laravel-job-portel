@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,4 @@ Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/jobs/{id}/{job}', [JobController::class, 'show'])->name('jobs.show');
+Route::get('/company/{id}/{company}', [CompanyController::class, 'index'])->name('company.index');
