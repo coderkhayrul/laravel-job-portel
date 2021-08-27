@@ -5,7 +5,10 @@
     <div class="row">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-primary text-white">{{ $job->title }}</div>
+                <div class="card-header bg-primary m-0 text-white d-flex justify-content-between">
+                    {{Str::limit($job->title, 90)}}
+                    <a href="{{ url('/') }}" class="btn btn-success btn-sm">Back</a>
+                </div>
 
                 <div class="card-body">
                     <p>
@@ -31,7 +34,10 @@
                     <p>Date: {{ $job->created_at->diffForHumans() }}</p>
                 </div>
             </div>
-            <a href="" class="btn btn-success">Apply</a>
+            <br>
+            @if (Auth::check() && Auth::user()->user_type === 'seeker')
+            <a style="width:100%" href="" class="btn btn-success">Apply</a>
+            @endif
         </div>
     </div>
 </div>

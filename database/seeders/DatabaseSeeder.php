@@ -2,9 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Company;
-use App\Models\Job;
-use App\Models\User;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,5 +21,18 @@ class DatabaseSeeder extends Seeder
             CompanyTableSeeder::class,
             JobTableSeeder::class,
         ]);
+        $categories = [
+            'Technology',
+            'Engineering',
+            'Government',
+            'Medical',
+            'Construction',
+            'Software'
+        ];
+        foreach ($categories as $category) {
+            Category::create([
+                'name' => $category
+            ]);
+        }
     }
 }
