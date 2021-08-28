@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,8 @@ Auth::routes();
 
 Route::get('/jobs/{id}/{job}', [JobController::class, 'show'])->name('jobs.show');
 Route::get('/company/{id}/{company}', [CompanyController::class, 'index'])->name('company.index');
+
+// USER PROFILE ROUTE
+Route::prefix('user')->group(function () {
+    Route::get('/profile', [UserProfileController::class, 'index'])->name('profile.index');
+});
