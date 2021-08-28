@@ -32,4 +32,5 @@ Route::prefix('user')->group(function () {
     Route::post('/profile/create', [UserProfileController::class, 'store'])->name('profile.store');
     Route::post('/profile/coverletter', [UserProfileController::class, 'coverletter'])->name('profile.cover.letter');
     Route::post('/profile/resume', [UserProfileController::class, 'resume'])->name('profile.resume');
+    Route::post('/profile/avater', [UserProfileController::class, 'avater'])->name('profile.avater');
 });

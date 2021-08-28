@@ -58,4 +58,25 @@ class UserProfileController extends Controller
 
         return back()->with('success', 'User Profile Resume Updated');
     }
+
+    // AVATER FUNCTION
+    public function avater(Request $request)
+    {
+        $this->validate($request, ['avater' => 'required']);
+
+        $user_id = Auth::user()->id;
+        if ($request->hasFile('avater')) {
+            $file = $request->file('avater');
+            $ext = $file->getClientOriginalExtension();
+            $fileName = time() . '.' . $ext;
+            $file->move('upload/avater/', $fileName);
+        }
+        Profile::where('user_id', $user_id)->update(
+            [
+                'avatar' => $fileName,
+            ]
+        );
+
+        return back()->with('success', 'User Profile Image Updated');
+    }
 }

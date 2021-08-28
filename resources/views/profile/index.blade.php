@@ -11,10 +11,23 @@
     </div>
     @endif
     <div class="row">
-        <div class="col-md-2">
-            <img src="{{ asset('avatar/logo.png') }}" alt="" width="100">
+        <div class="col-md-3">
+            <img src="{{  asset('upload/avater').'/'.Auth::user()->profile->avatar ? asset('upload/avater').'/'.Auth::user()->profile->avatar : asset('avatar/logo.png')  }}" alt="" width="100" style="width: 100%;">
+            <br><br>
+            <form action="{{ route('profile.avater') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <input type="file" class="form-control @error('avater') is-invalid @enderror" name="avater">
+                @error('avater')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                <br>
+                <button class="btn btn-success float-right" type="submit">Update</button>
+            </form>
         </div>
-        <div class="col-md-6">
+
+        <div class="col-md-5">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     Update Your Profile
