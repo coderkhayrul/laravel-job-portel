@@ -26,15 +26,15 @@
                         <div class="form-group">
                             <label for="address">Address</label>
                             <input type="text" name="address" id="address" class="form-control" placeholder="Address"
-                                value="{{ $profile->address}}">
+                                value="{{ Auth::user()->profile->address }}">
                         </div>
                         <div class="form-group">
                             <label for="address">Experience</label>
-                            <textarea class="form-control" name="experience" id="experience" rows="3">{{ $profile->experience}}</textarea>
+                            <textarea class="form-control" name="experience" id="experience" rows="3">{{ Auth::user()->profile->experience }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="address">Bio</label>
-                            <textarea class="form-control" name="bio" id="bio" rows="3"> {{ $profile->bio}}</textarea>
+                            <textarea class="form-control" name="bio" id="bio" rows="3"> {{ Auth::user()->profile->bio }}</textarea>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-success" type="submit">Update</button>
@@ -55,7 +55,7 @@
                     <p><strong>Gender</strong> : {{ Auth::user()->profile->gender }}</p>
                     <p><strong>Experience</strong> : {{ Auth::user()->profile->experience }}</p>
                     <p><strong>Bio</strong> : {{ Auth::user()->profile->experience }}</p>
-                    <p><strong>Member On</strong>  : {{ Auth::user()->profile->created_at->diffForHumans() }}</p>
+                    <p><strong>Member On</strong>  : {{ date('F d Y', strtotime(Auth::user()->profile->created_at)) }}</p>
                 </div>
             </div>
             <br>
@@ -64,9 +64,17 @@
                     Update Cover Letter
                 </div>
                 <div class="card-body">
-                    <input type="file" class="form-control" name="cover_letter">
-                    <br>
-                    <button class="btn btn-success float-right" type="submit">Update</button>
+                    <form action="{{ route('profile.cover.letter') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" class="form-control @error('cover_letter') is-invalid @enderror" name="cover_letter">
+                        @error('cover_letter')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        <br>
+                        <button class="btn btn-success float-right" type="submit">Update</button>
+                    </form>
                 </div>
             </div>
             <br>
@@ -75,9 +83,17 @@
                     Update Resume
                 </div>
                 <div class="card-body">
-                    <input type="file" class="form-control" name="resume">
-                    <br>
-                    <button class="btn btn-success float-right" type="submit">Update</button>
+                    <form action="{{ route('profile.resume') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" class="form-control @error('resume') is-invalid @enderror" name="resume">
+                        @error('resume')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        <br>
+                        <button class="btn btn-success float-right" type="submit">Update</button>
+                    </form>
                 </div>
             </div>
         </div>

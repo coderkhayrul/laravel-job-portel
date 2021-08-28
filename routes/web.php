@@ -30,4 +30,6 @@ Route::get('/company/{id}/{company}', [CompanyController::class, 'index'])->name
 Route::prefix('user')->group(function () {
     Route::get('/profile', [UserProfileController::class, 'index'])->name('profile.index');
     Route::post('/profile/create', [UserProfileController::class, 'store'])->name('profile.store');
+    Route::post('/profile/coverletter', [UserProfileController::class, 'coverletter'])->name('profile.cover.letter');
+    Route::post('/profile/resume', [UserProfileController::class, 'resume'])->name('profile.resume');
 });

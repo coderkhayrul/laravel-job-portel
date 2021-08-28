@@ -10,10 +10,7 @@ class UserProfileController extends Controller
 {
     public function index()
     {
-        $user_id = Auth::user()->id;
-        $profile = Profile::where('user_id', $user_id)->first();
-
-        return view('profile.index', compact('profile'));
+        return view('profile.index');
     }
 
     public function store(Request $request)
@@ -28,5 +25,37 @@ class UserProfileController extends Controller
         ]);
 
         return back()->with('success', 'User Profile has been Updated');
+    }
+
+    public function coverletter(Request $request)
+    {
+        $this->validate($request, ['cover_letter' => 'required']);
+
+        $user_id = Auth::user()->id;
+        $cover_letter = $request->file('cover_letter')->store('public/upload');
+
+        Profile::where('user_id', $user_id)->update(
+            [
+                'cover_letter' => $cover_letter,
+            ]
+        );
+
+        return back()->with('success', 'User Profile Cover Letter Updated');
+    }
+
+    public function resume(Request $request)
+    {
+        $this->validate($request, ['resume' => 'required']);
+
+        $user_id = Auth::user()->id;
+        $resume = $request->file('resume')->store('public/upload');
+
+        Profile::where('user_id', $user_id)->update(
+            [
+                'resume' => $resume,
+            ]
+        );
+
+        return back()->with('success', 'User Profile Resume Updated');
     }
 }
