@@ -15,11 +15,20 @@ class UserProfileController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'address' => 'required',
+            'bio' => 'required| min:20',
+            'experience' => 'required| min:20',
+            'phone_number' => 'required| min:10|numeric',
+            // 'phone_number' => 'required|regex:/(01)[0-9]{9}/|max:11'
+        ]);
+
         $user_id = Auth::user()->id;
         $old_profile = Profile::where('user_id', $user_id)->first();
 
         $profile = Profile::where('user_id', $user_id)->update([
             'address' => $request->address ? $request->address : $old_profile->address,
+            'phone_number' => $request->phone_number ? $request->phone_number : $old_profile->phone_number,
             'experience' => $request->experience ? $request->experience : $old_profile->experience,
             'bio' => $request->bio ? $request->bio : $old_profile->bio,
         ]);
@@ -29,7 +38,7 @@ class UserProfileController extends Controller
 
     public function coverletter(Request $request)
     {
-        $this->validate($request, ['cover_letter' => 'required']);
+        $this->validate($request, ['cover_letter' => 'required|mimes:pdf,doc,docx,|max:20000']);
 
         $user_id = Auth::user()->id;
         $cover_letter = $request->file('cover_letter')->store('public/upload');
@@ -45,7 +54,7 @@ class UserProfileController extends Controller
 
     public function resume(Request $request)
     {
-        $this->validate($request, ['resume' => 'required']);
+        $this->validate($request, ['resume' => 'required|mimes:pdf,doc,docx,|max:20000']);
 
         $user_id = Auth::user()->id;
         $resume = $request->file('resume')->store('public/upload');
@@ -62,7 +71,7 @@ class UserProfileController extends Controller
     // AVATER FUNCTION
     public function avater(Request $request)
     {
-        $this->validate($request, ['avater' => 'required']);
+        $this->validate($request, ['avater' => 'required|mimes:png,jpg,jpeg,|max:50000']);
 
         $user_id = Auth::user()->id;
         if ($request->hasFile('avater')) {

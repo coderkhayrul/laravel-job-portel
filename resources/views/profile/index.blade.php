@@ -38,8 +38,23 @@
                         @csrf
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <input type="text" name="address" id="address" class="form-control" placeholder="Address"
+                            <input type="text" name="address" id="address" class="form-control @error('address') is-invalid @enderror" placeholder="Address"
                                 value="{{ Auth::user()->profile->address }}">
+                            @error('address')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Phone Number</label>
+                            <input type="text" name="phone_number" id="phone_number" class="form-control  @error('phone_number') is-invalid @enderror" placeholder="phone_number"
+                                value="{{ Auth::user()->profile->phone_number }}">
+                            @error('phone_number')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="address">Experience</label>
@@ -65,17 +80,18 @@
                     <p><strong>Name</strong> : {{ Auth::user()->name }}</p>
                     <p><strong>Email</strong> : {{ Auth::user()->email }}</p>
                     <p><strong>Address</strong> : {{ Auth::user()->profile->address }}</p>
+                    <p><strong>Phone Number</strong> : {{ Auth::user()->profile->phone_number }}</p>
                     <p><strong>Gender</strong> : {{ Auth::user()->profile->gender }}</p>
                     <p><strong>Experience</strong> : {{ Auth::user()->profile->experience }}</p>
                     <p><strong>Bio</strong> : {{ Auth::user()->profile->experience }}</p>
                     <p><strong>Member On</strong>  : {{ date('F d Y', strtotime(Auth::user()->profile->created_at)) }}</p>
                     @if (!empty(Auth::user()->profile->cover_letter))
-                    <p><a href="{{ Storage::url(Auth::user()->profile->cover_letter) }}">Cover Letter</a></p>
+                    <p><a target="_blank" href="{{ Storage::url(Auth::user()->profile->cover_letter) }}">Cover Letter</a></p>
                     @else
                     <p>Please Upload Cover Letter</p>
                     @endif
                     @if (!empty(Auth::user()->profile->resume))
-                    <p><a href="{{ Storage::url(Auth::user()->profile->resume) }}">Resume</a></p>
+                    <p><a target="_blank" href="{{ Storage::url(Auth::user()->profile->resume) }}">Resume</a></p>
                     @else
                     <p>Please Upload Resume</p>
                     @endif
