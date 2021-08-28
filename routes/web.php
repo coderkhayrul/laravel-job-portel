@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\EmployerRegisterController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -34,3 +35,7 @@ Route::prefix('user')->group(function () {
     Route::post('/profile/resume', [UserProfileController::class, 'resume'])->name('profile.resume');
     Route::post('/profile/avater', [UserProfileController::class, 'avater'])->name('profile.avater');
 });
+
+// EMPLOYER VIEW
+Route::view('employer/register', 'auth.employer-register')->name('employer.register');
+Route::post('/employer/register', [EmployerRegisterController::class, 'employerRegister'])->name('emp.register');
