@@ -9,8 +9,8 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                    <p>Update Your Profile</p>
-                    <a class="btn btn-primary btn-sm"href="/"><i class="fas fa-backward"></i> Back</a>
+                    Update Your Profile
+                    <a class="btn btn-primary btn-sm"href="{{ url('/') }}"><i class="fas fa-backward"></i> Back</a>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
