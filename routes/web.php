@@ -29,4 +29,5 @@ Route::get('/company/{id}/{company}', [CompanyController::class, 'index'])->name
 // USER PROFILE ROUTE
 Route::prefix('user')->group(function () {
     Route::get('/profile', [UserProfileController::class, 'index'])->name('profile.index');
+    Route::post('/profile/create', [UserProfileController::class, 'store'])->name('profile.store');
 });

@@ -20,7 +20,6 @@ class CreateProfilesTable extends Migration
             $table->string('gender');
             $table->string('dob');
             $table->string('experience');
-            $table->string('description');
             $table->string('bio');
             $table->string('cover_letter');
             $table->string('resume');
