@@ -100,6 +100,7 @@
                     <p><strong>Website:</strong> {{ Auth::user()->company->website }}</p>
                     <p><strong>Slogan:</strong> {{ Auth::user()->company->slogan }}</p>
                     <p><strong>Description:</strong> {{ Auth::user()->company->description }}</p>
+                    <p><strong>Company Page:</strong> <a href="{{ route('company.index',[Auth::user()->company->id,Auth::user()->company->slug]) }}">View Company</a></p>
                 </div>
             </div>
             <br>

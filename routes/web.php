@@ -25,7 +25,6 @@ Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/jobs/{id}/{job}', [JobController::class, 'show'])->name('jobs.show');
-Route::get('/company/{id}/{company}', [CompanyController::class, 'index'])->name('company.index');
 
 // USER PROFILE ROUTE LIST
 Route::prefix('user')->group(function () {
@@ -41,5 +40,6 @@ Route::view('employer/register', 'auth.employer-register')->name('employer.regis
 Route::post('/employer/register', [EmployerRegisterController::class, 'employerRegister'])->name('emp.register');
 
 // COMPANY ROUTE LIST
+Route::get('/company/{id}/{company}', [CompanyController::class, 'index'])->name('company.index');
 Route::get('company/create', [CompanyController::class, 'create'])->name('company.create');
 Route::post('company/store', [CompanyController::class, 'store'])->name('company.store');
