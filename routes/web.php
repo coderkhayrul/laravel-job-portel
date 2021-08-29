@@ -43,3 +43,4 @@ Route::post('/employer/register', [EmployerRegisterController::class, 'employerR
 Route::get('/company/{id}/{company}', [CompanyController::class, 'index'])->name('company.index');
 Route::get('company/create', [CompanyController::class, 'create'])->name('company.create');
 Route::post('company/store', [CompanyController::class, 'store'])->name('company.store');
+Route::post('company/cover/photo', [CompanyController::class, 'coverPhoto'])->name('company.cover.photo');

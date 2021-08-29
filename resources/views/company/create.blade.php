@@ -97,7 +97,7 @@
                     <p><strong>Company Name:</strong> {{ Auth::user()->company->cname }}</p>
                     <p><strong>Address:</strong> {{ Auth::user()->company->address }}</p>
                     <p><strong>Mobile Number:</strong> {{ Auth::user()->company->phone }}</p>
-                    <p><strong>Website:</strong> {{ Auth::user()->company->website }}</p>
+                    <p><strong>Website:</strong> <a href="{{ Auth::user()->company->website }}" target="_blank">{{ Auth::user()->company->website }}</a></p>
                     <p><strong>Slogan:</strong> {{ Auth::user()->company->slogan }}</p>
                     <p><strong>Description:</strong> {{ Auth::user()->company->description }}</p>
                     <p><strong>Company Page:</strong> <a href="{{ route('company.index',[Auth::user()->company->id,Auth::user()->company->slug]) }}">View Company</a></p>
@@ -109,7 +109,7 @@
                     Update Cover Photo
                 </div>
                 <div class="card-body">
-                    <form action="#" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('company.cover.photo') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="file" class="form-control @error('cover_photo') is-invalid @enderror" name="cover_photo">
                         @error('cover_photo')

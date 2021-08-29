@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="company-profile">
-                <img src="{{ asset('cover/php_cover.jpg') }}" alt="Company Cover Image" style="width:100%;">
+                <img src="{{ $company->cover_photo ? asset('upload/coverphoto/').'/'.$company->cover_photo : asset('cover/php_cover.jpg') }}" alt="Company Cover Image" style="width:100%;">
                 <div class="company-description">
                     <img style="width:100px" src="{{ asset('avatar/logo.png') }}" alt="Company Logo">
                     {{ $company->description }}
