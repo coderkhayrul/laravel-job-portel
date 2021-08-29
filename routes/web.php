@@ -27,6 +27,7 @@ Auth::routes();
 // JOB ROUTE LIST
 Route::get('/jobs/{id}/{job}', [JobController::class, 'show'])->name('jobs.show');
 Route::get('/jobs/create', [JobController::class, 'create'])->name('jobs.create');
+Route::post('/jobs/store', [JobController::class, 'store'])->name('jobs.store');
 
 // USER PROFILE ROUTE LIST
 Route::prefix('user')->group(function () {

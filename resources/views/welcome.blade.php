@@ -3,7 +3,13 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <h1>Recent Jobs</h1>
+        <div class="">
+            <h1 class="float-left mr-2">Recent Jobs</h1>
+            @if (Auth::check() && Auth::user()->user_type === 'employer')
+            <a href="{{ route('jobs.create') }}" class="btn btn-primary float-right">Job Create</a>
+            @endif
+            <br>
+        </div>
         <table class="table table-hover">
             <thead>
                 <th>Logo</th>
