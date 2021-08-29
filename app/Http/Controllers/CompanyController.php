@@ -10,4 +10,9 @@ class CompanyController extends Controller
     {
         return view('company.index', compact('company'));
     }
+
+    public function create()
+    {
+        return view('company.create');
+    }
 }

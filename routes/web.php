@@ -27,7 +27,7 @@ Auth::routes();
 Route::get('/jobs/{id}/{job}', [JobController::class, 'show'])->name('jobs.show');
 Route::get('/company/{id}/{company}', [CompanyController::class, 'index'])->name('company.index');
 
-// USER PROFILE ROUTE
+// USER PROFILE ROUTE LIST
 Route::prefix('user')->group(function () {
     Route::get('/profile', [UserProfileController::class, 'index'])->name('profile.index');
     Route::post('/profile/create', [UserProfileController::class, 'store'])->name('profile.store');
@@ -36,6 +36,9 @@ Route::prefix('user')->group(function () {
     Route::post('/profile/avater', [UserProfileController::class, 'avater'])->name('profile.avater');
 });
 
-// EMPLOYER VIEW
+// EMPLOYER ROUTE LIST
 Route::view('employer/register', 'auth.employer-register')->name('employer.register');
 Route::post('/employer/register', [EmployerRegisterController::class, 'employerRegister'])->name('emp.register');
+
+// COMPANY ROUTE LIST
+Route::get('company/create', [CompanyController::class, 'create'])->name('company.create');
