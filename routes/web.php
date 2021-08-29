@@ -24,7 +24,9 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// JOB ROUTE LIST
 Route::get('/jobs/{id}/{job}', [JobController::class, 'show'])->name('jobs.show');
+Route::get('/jobs/create', [JobController::class, 'create'])->name('jobs.create');
 
 // USER PROFILE ROUTE LIST
 Route::prefix('user')->group(function () {
