@@ -59,4 +59,25 @@ class CompanyController extends Controller
             return back()->with('success', 'Company Cover Photo Updated Successfully');
         }
     }
+
+    public function logo(Request $request)
+    {
+        $this->validate($request, [
+            'logo' => 'required|mimes:png,jpg,jpeg|max:2000',
+        ]);
+
+        $user_id = Auth::user()->id;
+        if (Auth::user()->company->logo) {
+            unlink('upload/logo/' . Auth::user()->company->logo);
+        }
+        if ($request->hasFile('logo')) {
+            $file = $request->file('logo');
+            $ext = $file->getClientOriginalExtension();
+            $fileName = time() . '.' . $ext;
+            $file->move('upload/logo/', $fileName);
+            Company::where('user_id', $user_id)->update(['logo' => $fileName]);
+
+            return back()->with('success', 'Company Logo Updated Successfully');
+        }
+    }
 }

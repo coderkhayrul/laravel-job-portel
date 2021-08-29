@@ -12,9 +12,9 @@
     @endif
     <div class="row">
         <div class="col-md-3">
-            <img src="{{  asset(Auth::user()->company->logo) ? asset(Auth::user()->company->logo) : asset('avatar/logo.png') }}" alt="company logo" width="100" style="width: 100%;">
+            <img src="{{  !empty(asset('upload/logo') .'/'. Auth::user()->company->logo) ? asset('upload/logo') .'/'. Auth::user()->company->logo : asset('avatar/logo.png') }}" alt="company logo" width="100" style="width: 100%;">
             <br><br>
-            <form action="#" method="post" enctype="multipart/form-data">
+            <form action="{{ route('company.logo') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo">
                 @error('logo')
