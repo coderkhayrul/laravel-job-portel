@@ -34,7 +34,7 @@
                     <a class="btn btn-primary btn-sm" href="{{ url('/') }}"><i class="fas fa-backward"></i> Back</a>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('profile.store') }}" method="POST">
+                    <form action="{{ route('company.store') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="address">Address</label>
