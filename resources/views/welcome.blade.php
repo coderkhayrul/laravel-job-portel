@@ -39,17 +39,18 @@
     <h1>Featured Companies</h1>
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            @foreach ($companies as $company)
+            <div class="col-md-4 mb-2">
                 <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img width="80" src="{{ asset('avatar/logo.png') }}" alt="">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title"><strong>{{ $company->cname }}</strong></h5>
+                        <p class="card-text">{{Str::limit($company->description, 100)}}</p>
+                        <a href="{{ route('company.index',[$company->id,$company->slug]) }}" class="btn btn-primary">Visit Company</a>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 </div>

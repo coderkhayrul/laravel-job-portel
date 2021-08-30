@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\JobPostRequest;
 use App\Models\Category;
+use App\Models\Company;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,9 +19,10 @@ class JobController extends Controller
 
     public function index()
     {
-        $jobs = Job::orderBy('id', 'DESC')->get()->take(10);
+        $jobs = Job::orderBy('id', 'DESC')->limit(10)->where('status', 1)->get();
+        $companies = Company::latest()->limit(10)->get();
 
-        return view('welcome', compact('jobs'));
+        return view('welcome', compact('jobs', 'companies'));
     }
 
     public function create()
