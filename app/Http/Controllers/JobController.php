@@ -11,6 +11,11 @@ use Illuminate\Support\Str;
 
 class JobController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('employer', ['except' => ['index', 'show']]);
+    }
+
     public function index()
     {
         $jobs = Job::orderBy('id', 'DESC')->get()->take(10);

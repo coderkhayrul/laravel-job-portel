@@ -20,7 +20,7 @@ class EmployerMiddleware
         if (Auth::check() && Auth::user()->user_type == 'employer') {
             return $next($request);
         } else {
-            return redirect()->url('/');
+            return redirect('/');
         }
     }
 }

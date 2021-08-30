@@ -20,7 +20,7 @@ class SeekerMiddleware
         if (Auth::check() && Auth::user()->user_type == 'seeker') {
             return $next($request);
         } else {
-            return redirect()->url('/');
+            return redirect('/');
         }
     }
 }
