@@ -62,4 +62,11 @@ class JobController extends Controller
         $categories = Category::orderBy('id', 'DESC')->get();
         return view('jobs.edit', compact('job', 'categories'));
     }
+
+    public function update(JobPostRequest $request, $id)
+    {
+        $job = Job::findOrFail($id);
+        $job->update($request->all());
+        return redirect()->back()->with('success', 'Job updated successfully');
+    }
 }

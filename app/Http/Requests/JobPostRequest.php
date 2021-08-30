@@ -28,7 +28,7 @@ class JobPostRequest extends FormRequest
             'description' => 'required',
             'roles' => 'required',
             'position' => 'required',
-            'category' => 'required',
+            'category_id' => 'required',
             'address' => 'required',
             'type' => 'required',
             'status' => 'required',

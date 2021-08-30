@@ -57,7 +57,7 @@
 
                         <div class="form-group">
                             <label for="category">Category</label>
-                            <select name="category" class="form-control  @error('category') is-invalid @enderror">
+                            <select name="category_id" class="form-control  @error('category') is-invalid @enderror">
                                 <option selected value="" disabled>Select Category</option>
                                 @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>

@@ -20,7 +20,7 @@
                 </div>
                 <div class="card-body">
 
-                    <form action="{{ route('jobs.store') }}" method="post">
+                    <form action="{{ route('jobs.update',$job->id) }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="title">Title</label>
@@ -56,8 +56,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="category">Category</label>
-                            <select name="category" class="form-control  @error('category') is-invalid @enderror">
+                            <label for="category_id">Category</label>
+                            <select name="category_id" class="form-control  @error('category') is-invalid @enderror">
                                 <option value="" selected disabled >Select Category</option>
                                 @foreach ($categories as $key => $category)
                                 <option {{ $job->category->name === $category->name ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>

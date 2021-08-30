@@ -31,6 +31,7 @@ Route::prefix('jobs')->group(function () {
     Route::post('/store', [JobController::class, 'store'])->name('jobs.store');
     Route::get('/myjob/edit/{id}', [JobController::class, 'editjob'])->name('jobs.edit');
     Route::get('/my-job', [JobController::class, 'myjob'])->name('jobs.myjob');
+    Route::post('/update/{id}', [JobController::class, 'update'])->name('jobs.update');
 });
 
 
