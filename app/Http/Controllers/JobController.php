@@ -91,12 +91,25 @@ class JobController extends Controller
         return view('jobs.applicants', compact('applicants'));
     }
 
-    public function getalljob()
+    public function getalljob(Request $request)
     {
-        $jobs = Job::where('status', 1)->orderBy('id', 'DESC')->paginate(5);
-        $companies = Company::get()->random(10);
-        $categories = Category::orderBy('id', 'DESC')->get();
+        $keyword = $request->title;
+        $type = $request->type;
+        $category_id = $request->category_id;
+        $address = $request->address;
 
-        return view('jobs.getalljob', compact('jobs', 'companies', 'categories'));
+        if ($keyword || $type || $category_id || $address) {
+            $jobs = Job::where('title', 'LIKE', '%' . $keyword . '%')
+                ->orwhere('type', $type)
+                ->orwhere('category_id', $category_id)
+                ->orwhere('address', $address)
+                ->paginate(5);
+
+            return view('jobs.getalljob', compact('jobs'));
+        } else {
+
+            $jobs = Job::orderBy('id', 'DESC')->paginate(5);
+            return view('jobs.getalljob', compact('jobs'));
+        }
     }
 }

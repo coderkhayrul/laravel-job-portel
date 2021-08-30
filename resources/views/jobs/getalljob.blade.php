@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <form action="" method="get">
+        <form action="{{ route('jobs.all') }}" method="get">
             @csrf
-            <div class="form-inline">
+            <div class="form-inline mb-2">
                 <div class="fomr-group">
                     <label for="">Keyword&nbsp;</label>
                     <input type="text" name="title" class="form-control">&nbsp;&nbsp;&nbsp;
@@ -19,6 +19,9 @@
                         <option value="casual">Casual</option>
                     </select>&nbsp;&nbsp;&nbsp;
                 </div>
+                @php
+                    $categories = App\Models\Category::all();
+                @endphp
                 <div class="fomr-group">
                     <label for="">Category&nbsp;</label>
                     <select name="category_id" class="form-control  @error('category') is-invalid @enderror">
@@ -62,28 +65,8 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $jobs->links('pagination::bootstrap-4') }}
-    </div>
-    <br>
-    <h1>Featured Companies</h1>
-    <div class="container">
-        <div class="row">
-            @foreach ($companies as $company)
-            <div class="col-md-4 mb-2">
-                <div class="card" style="width: 18rem;">
-                    <img width="150px" src="{{ asset('avatar/logo.png') }}" alt="company logo">
-                    <div class="card-body">
-                        <h5 class="card-title"><strong>{{ $company->cname }}</strong></h5>
-                        <p class="card-text">{{Str::limit($company->description, 100)}}</p>
-                        <a href="{{ route('company.index',[$company->id,$company->slug]) }}" class="btn btn-primary">Visit Company</a>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
+        {{ $jobs->appends(Request::except('page'))->links('pagination::bootstrap-4') }}
+        {{-- {{ $jobs->links('pagination::bootstrap-4') }} --}}
     </div>
 </div>
 @endsection
-<style>
-
-</style>
