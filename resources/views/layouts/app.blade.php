@@ -68,7 +68,9 @@
                             @endif
                         @else
                         <li class="nav-item">
+                            @if (Auth::user()->user_type === 'employer')
                             <a href="{{ route('jobs.create') }}" class="btn btn-sm btn-secondary nav-link text-white">Post A Job</a>
+                            @endif
                         </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

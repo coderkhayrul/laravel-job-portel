@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
+
             <div class="card">
                 <div class="card-header bg-primary m-0 text-white d-flex justify-content-between">
                     {{Str::limit($job->title, 90)}}
@@ -36,7 +37,20 @@
             </div>
             <br>
             @if (Auth::check() && Auth::user()->user_type === 'seeker')
-            <a style="width:100%" href="" class="btn btn-success">Apply</a>
+            @if (Session::has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ Session::get('success'); }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+                @if (!$job->checkApplication())
+                    <form action="{{ route('jobs.apply', $job->id) }}" method="post">
+                        @csrf
+                        <button class="btn btn-success" style="width:100%" type="submit">Apply</button>
+                    </form>
+                @endif
             @endif
         </div>
     </div>

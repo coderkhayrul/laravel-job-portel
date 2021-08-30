@@ -34,6 +34,8 @@ Route::prefix('jobs')->group(function () {
     Route::post('/update/{id}', [JobController::class, 'update'])->name('jobs.update');
 });
 
+// Job Application
+Route::post('application/{id}', [JobController::class, 'apply'])->name('jobs.apply');
 
 // USER PROFILE ROUTE LIST
 Route::prefix('user')->group(function () {
@@ -49,8 +51,10 @@ Route::view('employer/register', 'auth.employer-register')->name('employer.regis
 Route::post('/employer/register', [EmployerRegisterController::class, 'employerRegister'])->name('emp.register');
 
 // COMPANY ROUTE LIST
-Route::get('/company/{id}/{company}', [CompanyController::class, 'index'])->name('company.index');
-Route::get('company/create', [CompanyController::class, 'create'])->name('company.create');
-Route::post('company/store', [CompanyController::class, 'store'])->name('company.store');
-Route::post('company/cover/photo', [CompanyController::class, 'coverPhoto'])->name('company.cover.photo');
-Route::post('company/logo', [CompanyController::class, 'logo'])->name('company.logo');
+Route::prefix('company')->group(function () {
+    Route::get('/{id}/{company}', [CompanyController::class, 'index'])->name('company.index');
+    Route::get('/create', [CompanyController::class, 'create'])->name('company.create');
+    Route::post('/store', [CompanyController::class, 'store'])->name('company.store');
+    Route::post('/cover/photo', [CompanyController::class, 'coverPhoto'])->name('company.cover.photo');
+    Route::post('/logo', [CompanyController::class, 'logo'])->name('company.logo');
+});

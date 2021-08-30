@@ -13,7 +13,7 @@ class JobController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('employer', ['except' => ['index', 'show']]);
+        $this->middleware('employer', ['except' => ['index', 'show', 'apply']]);
     }
 
     public function index()
@@ -73,5 +73,13 @@ class JobController extends Controller
         $job = Job::findOrFail($id);
         $job->update($request->all());
         return redirect()->back()->with('success', 'Job updated successfully');
+    }
+
+    public function apply($id)
+    {
+        $jobId = Job::findOrFail($id);
+        $jobId->users()->attach(Auth::user()->id);
+
+        return redirect()->back()->with('success', 'Application Sent successfully');
     }
 }
