@@ -39,7 +39,7 @@ class JobController extends Controller
         $job = new Job();
         $job->user_id = Auth::user()->id;
         $job->company_id = Auth::user()->company->id;
-        $job->category_id = $request->category;
+        $job->category_id = $request->category_id;
         $job->title = $request->title;
         $job->slug = Str::slug($request->title);
         $job->description = $request->description;

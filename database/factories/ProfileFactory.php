@@ -2,19 +2,19 @@
 
 namespace Database\Factories;
 
-use App\Models\Company;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class CompanyFactory extends Factory
+class ProfileFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Company::class;
+    protected $model = Profile::class;
 
     /**
      * Define the model's default state.
@@ -25,16 +25,13 @@ class CompanyFactory extends Factory
     {
         return [
             'user_id' => User::all()->random()->id,
-            'cname' => $name = $this->faker->company(),
-            'slug' => Str::slug($name, '-'),
             'address' => $this->faker->address(),
-            'phone' => $this->faker->phoneNumber(),
-            'website' => $this->faker->domainName(),
-            'logo' => 'logo.png',
-            'cover_photo' => 'php_cover.jpg',
-            'slogan' => 'learn-earn and grow',
-            'description' => $this->faker->paragraph(rand(2, 10)),
-
+            'phone_number' => $this->faker->e164PhoneNumber(),
+            'gender' => $this->faker->e164PhoneNumber(),
+            'dob' => $this->faker->e164PhoneNumber(),
+            'experience' => $this->faker->e164PhoneNumber(),
+            'bio' => $this->faker->e164PhoneNumber(),
+            'phone_number' => $this->faker->e164PhoneNumber(),
         ];
     }
 }

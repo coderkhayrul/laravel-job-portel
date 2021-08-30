@@ -86,6 +86,7 @@
                                     @if (Auth::user()->user_type === 'employer')
                                         <a class="dropdown-item" href="{{ route('company.create') }}">Company</a>
                                         <a class="dropdown-item" href="{{ route('jobs.myjob') }}">My Jobs</a>
+                                        <a class="dropdown-item" href="{{ route('jobs.applicant') }}">Applicants</a>
                                     @else
                                         <a class="dropdown-item" href="{{ route('profile.index') }}">Profile</a>
                                     @endif

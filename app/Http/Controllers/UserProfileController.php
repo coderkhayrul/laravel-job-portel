@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class UserProfileController extends Controller
 {
@@ -79,6 +80,10 @@ class UserProfileController extends Controller
         $this->validate($request, ['avater' => 'required|mimes:png,jpg,jpeg,|max:50000']);
 
         $user_id = Auth::user()->id;
+        if (File::exists(public_path('upload/avater/', Auth::user()->profile->avatar))) {
+            unlink('upload/avater/' . Auth::user()->profile->avatar);
+        }
+
         if ($request->hasFile('avater')) {
             $file = $request->file('avater');
             $ext = $file->getClientOriginalExtension();

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class CompanyController extends Controller
 {
@@ -52,7 +54,7 @@ class CompanyController extends Controller
             'cover_photo' => 'required|mimes:png,jpg,jpeg|max:2000',
         ]);
         $user_id = Auth::user()->id;
-        if (Auth::user()->company->cover_photo) {
+        if (File::exists(public_path('upload/coverphoto', Auth::user()->company->cover_photo))) {
             unlink('upload/coverphoto/' . Auth::user()->company->cover_photo);
         }
         if ($request->hasFile('cover_photo')) {
@@ -73,7 +75,7 @@ class CompanyController extends Controller
         ]);
 
         $user_id = Auth::user()->id;
-        if (Auth::user()->company->logo) {
+        if (File::exists(public_path('upload/logo', Auth::user()->company->logo))) {
             unlink('upload/logo/' . Auth::user()->company->logo);
         }
         if ($request->hasFile('logo')) {

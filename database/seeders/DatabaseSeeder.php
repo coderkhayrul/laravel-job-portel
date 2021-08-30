@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             CompanyTableSeeder::class,
             JobTableSeeder::class,
+            ProfileTableSeeder::class,
         ]);
         $categories = [
             'Technology',
