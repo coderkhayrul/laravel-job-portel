@@ -121,7 +121,7 @@
 
                         <div class="form-group">
                             <label for="last_date">Last Date</label>
-                            <input type="date" value="{{ old('last_date') }}" name="last_date" id="last_date" class="form-control @error('last_date') is-invalid @enderror">
+                            <input type="date" value="{{ old('last_date') }}" name="last_date" id="datepicker" class="form-control @error('last_date') is-invalid @enderror">
                             @error('last_date')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
