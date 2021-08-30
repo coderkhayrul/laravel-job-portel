@@ -30,9 +30,7 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
-    <div>
-        <a href="{{ route('jobs.all') }}" class="btn btn-success btn-lg" style="margin-left: 47%;">Browse All Jobs</a>
+        {{ $jobs->links('pagination::bootstrap-4') }}
     </div>
     <br>
     <h1>Featured Companies</h1>

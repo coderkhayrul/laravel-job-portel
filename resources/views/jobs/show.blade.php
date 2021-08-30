@@ -32,6 +32,7 @@
                     <p>Employee Type: {{ $job->type }}</p>
                     <p>Position: {{ $job->position }}</p>
                     <p>Date: {{ $job->created_at->diffForHumans() }}</p>
+                    <p><strong>Last Date To Apply:</strong> {{ date('F d, Y', strtotime($job->last_date)) }}</p>
                 </div>
             </div>
             <br>

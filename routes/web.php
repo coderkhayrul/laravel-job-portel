@@ -33,6 +33,7 @@ Route::prefix('jobs')->group(function () {
     Route::get('/my-job', [JobController::class, 'myjob'])->name('jobs.myjob');
     Route::post('/update/{id}', [JobController::class, 'update'])->name('jobs.update');
 
+    Route::get('/all', [JobController::class, 'getalljob'])->name('jobs.all');
     Route::get('/applications', [JobController::class, 'applicant'])->name('jobs.applicant');
 });
 
