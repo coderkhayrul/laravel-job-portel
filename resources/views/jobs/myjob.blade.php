@@ -34,7 +34,7 @@
                                     <a class="btn btn-success btn-sm"
                                         href="{{ route('jobs.show',[$job->id,$job->slug]) }}">View</a>
                                     <a class="btn btn-primary btn-sm"
-                                    href="{{ route('jobs.show',[$job->id,$job->slug]) }}">Edit</a>
+                                    href="{{ route('jobs.edit',$job->id) }}">Edit</a>
                                 </td>
                             </tr>
                             @endforeach

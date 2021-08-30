@@ -19,4 +19,9 @@ class Job extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

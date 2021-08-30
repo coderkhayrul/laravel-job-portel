@@ -81,6 +81,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @if (Auth::user()->user_type === 'employer')
                                         <a class="dropdown-item" href="{{ route('company.create') }}">Company</a>
+                                        <a class="dropdown-item" href="{{ route('jobs.myjob') }}">My Jobs</a>
                                     @else
                                         <a class="dropdown-item" href="{{ route('profile.index') }}">Profile</a>
                                     @endif

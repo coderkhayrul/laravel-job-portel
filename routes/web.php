@@ -25,11 +25,14 @@ Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // JOB ROUTE LIST
-Route::get('/jobs/{id}/{job}', [JobController::class, 'show'])->name('jobs.show');
-Route::get('/jobs/create', [JobController::class, 'create'])->name('jobs.create');
-Route::post('/jobs/store', [JobController::class, 'store'])->name('jobs.store');
-Route::post('/jobs/{id}/edit', [JobController::class, 'edit'])->name('jobs.edit');
-Route::get('/jobs/my-job', [JobController::class, 'myjob'])->name('jobs.myjob');
+Route::prefix('jobs')->group(function () {
+    Route::get('/{id}/{job}', [JobController::class, 'show'])->name('jobs.show');
+    Route::get('/create', [JobController::class, 'create'])->name('jobs.create');
+    Route::post('/store', [JobController::class, 'store'])->name('jobs.store');
+    Route::get('/myjob/edit/{id}', [JobController::class, 'editjob'])->name('jobs.edit');
+    Route::get('/my-job', [JobController::class, 'myjob'])->name('jobs.myjob');
+});
+
 
 // USER PROFILE ROUTE LIST
 Route::prefix('user')->group(function () {

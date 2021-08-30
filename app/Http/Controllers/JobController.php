@@ -18,15 +18,15 @@ class JobController extends Controller
         return view('welcome', compact('jobs'));
     }
 
-    public function show($id, Job $job)
-    {
-        return view('jobs.show', compact('job'));
-    }
-
     public function create()
     {
         $categories = Category::orderBy('id', 'DESC')->get();
         return view('jobs.create', compact('categories'));
+    }
+
+    public function show($id, Job $job)
+    {
+        return view('jobs.show', compact('job'));
     }
 
     public function store(JobPostRequest $request)
@@ -54,5 +54,12 @@ class JobController extends Controller
         $jobs = Job::where('user_id', Auth::user()->id)->get();
 
         return view('jobs.myjob', compact('jobs'));
+    }
+
+    public function editjob($id)
+    {
+        $job = Job::findOrFail($id);
+        $categories = Category::orderBy('id', 'DESC')->get();
+        return view('jobs.edit', compact('job', 'categories'));
     }
 }
