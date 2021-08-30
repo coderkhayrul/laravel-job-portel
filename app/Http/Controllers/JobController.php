@@ -48,4 +48,11 @@ class JobController extends Controller
 
         return redirect()->back()->with('success', 'Job Post Create Successfully');
     }
+
+    public function myjob()
+    {
+        $jobs = Job::where('user_id', Auth::user()->id)->get();
+
+        return view('jobs.myjob', compact('jobs'));
+    }
 }

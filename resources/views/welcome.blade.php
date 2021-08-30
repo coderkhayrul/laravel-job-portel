@@ -4,11 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="">
-            <h1 class="float-left mr-2">Recent Jobs</h1>
-            @if (Auth::check() && Auth::user()->user_type === 'employer')
-            <a href="{{ route('jobs.create') }}" class="btn btn-primary float-right">Job Create</a>
-            @endif
-            <br>
+            <h1 class="">Recent Jobs</h1>
         </div>
         <table class="table table-hover">
             <thead>

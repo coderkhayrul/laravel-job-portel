@@ -28,6 +28,8 @@ Auth::routes();
 Route::get('/jobs/{id}/{job}', [JobController::class, 'show'])->name('jobs.show');
 Route::get('/jobs/create', [JobController::class, 'create'])->name('jobs.create');
 Route::post('/jobs/store', [JobController::class, 'store'])->name('jobs.store');
+Route::post('/jobs/{id}/edit', [JobController::class, 'edit'])->name('jobs.edit');
+Route::get('/jobs/my-job', [JobController::class, 'myjob'])->name('jobs.myjob');
 
 // USER PROFILE ROUTE LIST
 Route::prefix('user')->group(function () {
