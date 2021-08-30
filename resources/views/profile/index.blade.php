@@ -29,9 +29,8 @@
 
         <div class="col-md-5">
             <div class="card">
-                <div class="card-header d-flex justify-content-between">
+                <div class="card-header">
                     Update Your Profile
-                    <a class="btn btn-primary btn-sm" href="{{ url('/') }}"><i class="fas fa-backward"></i> Back</a>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('profile.store') }}" method="POST">

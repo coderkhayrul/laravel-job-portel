@@ -6,9 +6,8 @@
         <div class="col-md-8">
 
             <div class="card">
-                <div class="card-header bg-primary m-0 text-white d-flex justify-content-between">
+                <div class="card-header bg-primary m-0 text-white">
                     {{Str::limit($job->title, 90)}}
-                    <a href="{{ url('/') }}" class="btn btn-success btn-sm">Back</a>
                 </div>
 
                 <div class="card-body">

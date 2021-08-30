@@ -82,4 +82,10 @@ class JobController extends Controller
 
         return redirect()->back()->with('success', 'Application Sent successfully');
     }
+
+    public function applicant()
+    {
+        $applicants = Job::has('users')->where('user_id', Auth::user()->id)->get();
+        return view('jobs.applicants', compact('applicants'));
+    }
 }
