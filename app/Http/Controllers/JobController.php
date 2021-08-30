@@ -95,7 +95,8 @@ class JobController extends Controller
     {
         $jobs = Job::where('status', 1)->orderBy('id', 'DESC')->paginate(5);
         $companies = Company::get()->random(10);
+        $categories = Category::orderBy('id', 'DESC')->get();
 
-        return view('jobs.getalljob', compact('jobs', 'companies'));
+        return view('jobs.getalljob', compact('jobs', 'companies', 'categories'));
     }
 }

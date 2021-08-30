@@ -2,10 +2,42 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="">
-            <h1 class="">Recent Jobs</h1>
-        </div>
+    <div class="row justify-content-center">
+        <form action="" method="get">
+            @csrf
+            <div class="form-inline">
+                <div class="fomr-group">
+                    <label for="">Keyword&nbsp;</label>
+                    <input type="text" name="title" class="form-control">&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="fomr-group">
+                    <label for="">Employment Type</label>
+                    <select name="type" class="form-control" id="type">
+                        <option value="" selected disabled>Select Type</option>
+                        <option value="fulltime">Full Time</option>
+                        <option value="parttime">Part Time</option>
+                        <option value="casual">Casual</option>
+                    </select>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="fomr-group">
+                    <label for="">Category&nbsp;</label>
+                    <select name="category_id" class="form-control  @error('category') is-invalid @enderror">
+                        <option selected value="" disabled>Select Category</option>
+                        @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="fomr-group">
+                    <label for="">Address&nbsp;</label>
+                    <input type="text" name="address" class="form-control">&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="fomr-group">
+                    <label for="">&nbsp;</label>
+                    <button type="submit" class="btn btn-primary">Search</button>&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+        </form>
         <table class="table table-hover">
             <thead>
                 <th>Logo</th>
