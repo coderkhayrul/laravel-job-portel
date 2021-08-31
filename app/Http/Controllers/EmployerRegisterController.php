@@ -26,6 +26,9 @@ class EmployerRegisterController extends Controller
 
         ]);
 
+        // Email Varification
+        // $user->sendEmailVerificationNotification();
+
         return redirect()->to('login');
     }
 }

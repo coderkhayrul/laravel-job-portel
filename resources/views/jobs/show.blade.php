@@ -46,10 +46,11 @@
                 </div>
             @endif
                 @if (!$job->checkApplication())
-                    <form action="{{ route('jobs.apply', $job->id) }}" method="post">
-                        @csrf
-                        <button class="btn btn-success" style="width:100%" type="submit">Apply</button>
-                    </form>
+                <form action="{{ route('jobs.apply', $job->id) }}" method="post">
+                    @csrf
+                    <button class="btn btn-success" style="width:100%" type="submit">Apply</button>
+                </form>
+
                 @endif
             @endif
         </div>
