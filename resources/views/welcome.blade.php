@@ -19,10 +19,12 @@
                 <tr>
                     <td><img width="80" src="{{ asset('avatar/logo.png') }}" alt=""></td>
                     <td>Position: {{ $job->position }} <br> <i class="fas fa-business-time text-primary"></i>
-                        {{ $job->type }}</td>
+                        {{ $job->type }}
+                    </td>
                     <td><i class="fas fa-map-marker-alt text-primary"></i>&nbsp;Address: {{ $job->address }}</td>
                     <td><i class="fas fa-globe-asia text-primary"></i>&nbsp;Date:
-                        {{ $job->created_at->diffForHumans() }}</td>
+                        {{ $job->created_at->diffForHumans() }}
+                    </td>
                     <td>
                         <a class="btn btn-success btn-sm" href="{{ route('jobs.show',[$job->id,$job->slug]) }}">View</a>
                     </td>

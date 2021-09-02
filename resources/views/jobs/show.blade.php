@@ -50,7 +50,6 @@
                     @csrf
                     <button class="btn btn-success" style="width:100%" type="submit">Apply</button>
                 </form>
-
                 @endif
             @endif
         </div>
